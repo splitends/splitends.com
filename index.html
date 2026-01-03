@@ -1,5 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--
+    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+    ░                                                    ░
+    ░   if you're reading this, you already know.       ░
+    ░                                                    ░
+    ░   splitends - private booking conduit             ░
+    ░   built with intention, not templates             ░
+    ░   every pixel deliberate, every byte considered   ░
+    ░                                                    ░
+    ░   iykyk                                            ░
+    ░                                                    ░
+    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+-->
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8EW95DH7GK"></script>
@@ -107,6 +120,11 @@
                 transform: translateX(-100vw) translateY(20vh) scaleX(3);
                 opacity: 0;
             }
+        }
+
+        @keyframes rainbow {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
         }
 
         @keyframes float {
@@ -339,6 +357,32 @@
 
     <script src="https://embed.acuityscheduling.com/js/embed.js" type="text/javascript"></script>
     <script>
+        // Console message for curious developers
+        console.log('%c⚡ splitends', 'font-size: 32px; font-weight: bold; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;');
+        console.log('%cif you\'re reading this, you already know.', 'font-size: 14px; color: #667eea;');
+        console.log('%ciykyk', 'font-size: 12px; color: #999; font-style: italic;');
+        
+        // Konami code easter egg
+        let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        let konamiIndex = 0;
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === konamiCode[konamiIndex]) {
+                konamiIndex++;
+                if (konamiIndex === konamiCode.length) {
+                    console.log('%c🎉 KONAMI CODE ACTIVATED', 'font-size: 24px; color: #00ff00; font-weight: bold;');
+                    console.log('%cyou found the secret. respect.', 'font-size: 14px; color: #667eea;');
+                    document.body.style.animation = 'rainbow 2s infinite';
+                    setTimeout(() => {
+                        document.body.style.animation = '';
+                        konamiIndex = 0;
+                    }, 5000);
+                }
+            } else {
+                konamiIndex = 0;
+            }
+        });
+        
         function openModal() {
             document.getElementById('bookingModal').classList.add('active');
             document.body.style.overflow = 'hidden';
