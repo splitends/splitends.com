@@ -1,6 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8EW95DH7GK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-8EW95DH7GK');
+    </script>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1527022767624656');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1527022767624656&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="private booking conduit">
@@ -62,12 +89,24 @@
             position: absolute;
             background: white;
             border-radius: 50%;
-            animation: twinkle 3s infinite;
+            animation: warpSpeed 2s linear infinite;
         }
 
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
+        @keyframes warpSpeed {
+            0% {
+                transform: translateX(0) translateY(0) scaleX(1);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateX(-100vw) translateY(20vh) scaleX(3);
+                opacity: 0;
+            }
         }
 
         @keyframes float {
@@ -124,12 +163,12 @@
 
         .btn {
             display: inline-block;
-            padding: clamp(0.75rem, 3vw, 1rem) clamp(1.5rem, 6vw, 2.5rem);
+            padding: clamp(0.6rem, 2.5vw, 0.85rem) clamp(1.25rem, 5vw, 2rem);
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: #fff;
             text-decoration: none;
             border-radius: 50px;
-            font-size: clamp(1rem, 4vw, 1.25rem);
+            font-size: clamp(0.95rem, 3.5vw, 1.1rem);
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
@@ -253,14 +292,9 @@
             }
 
             .btn {
-                font-size: 18px;
-                padding: 14px 40px;
-                min-width: 160px;
-            }
-
-            .star {
-                width: 2.5px !important;
-                height: 2.5px !important;
+                font-size: 16px;
+                padding: 12px 32px;
+                min-width: 140px;
             }
 
             .modal-content {
@@ -329,21 +363,21 @@
         });
 
         const starfield = document.getElementById('starfield');
-        const numStars = 200;
+        const numStars = 150;
 
         for (let i = 0; i < numStars; i++) {
             const star = document.createElement('div');
             star.className = 'star';
             
-            const size = Math.random() * 2 + 1;
+            const size = Math.random() * 2 + 0.5;
             star.style.width = size + 'px';
             star.style.height = size + 'px';
             
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
+            star.style.left = (Math.random() * 150 + 50) + '%';
+            star.style.top = (Math.random() * 100) + '%';
             
-            star.style.animationDelay = Math.random() * 3 + 's';
-            star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            star.style.animationDelay = Math.random() * 2 + 's';
+            star.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
             
             starfield.appendChild(star);
         }
