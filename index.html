@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Private booking conduit.">
     <title>splitends | DTSA</title>
     <style>
@@ -116,6 +116,23 @@
             cursor: pointer;
             border: none;
             white-space: nowrap;
+        }
+
+        /* Mobile specific - override clamp with fixed large sizes */
+        @media (max-width: 767px) {
+            .logo {
+                width: 85vw;
+                max-width: none;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            .btn {
+                font-size: 1.5rem;
+                padding: 1.25rem 3.5rem;
+            }
         }
 
         .btn::before {
