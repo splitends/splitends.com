@@ -3,54 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="splitends - Santa Ana's premier hair salon. Book your appointment for expert cuts, color, and styling services.">
-    <title>splitends | Santa Ana Hair Salon</title>
+    <meta name="description" content="private booking conduit">
+    <meta name="robots" content="noindex, nofollow">
+    <title>splitends</title>
     
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="see-you-in-santa-ana.png">
     <link rel="apple-touch-icon" href="see-you-in-santa-ana.png">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://splitends.com/">
-    <meta property="og:title" content="splitends | Santa Ana Hair Salon">
-    <meta property="og:description" content="Santa Ana's premier hair salon. Book your appointment for expert cuts, color, and styling services.">
-    <meta property="og:image" content="https://splitends.com/splitends.png">
-    <meta property="og:site_name" content="splitends">
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://splitends.com/">
-    <meta name="twitter:title" content="splitends | Santa Ana Hair Salon">
-    <meta name="twitter:description" content="Santa Ana's premier hair salon. Book your appointment for expert cuts, color, and styling services.">
-    <meta name="twitter:image" content="https://splitends.com/splitends.png">
-    
-    <!-- Additional SEO -->
-    <meta name="author" content="splitends">
-    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://splitends.com/">
     
-    <!-- Schema.org LocalBusiness -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "HairSalon",
-      "name": "splitends",
-      "url": "https://splitends.com",
-      "logo": "https://splitends.com/splitends.png",
-      "image": "https://splitends.com/splitends.png",
-      "description": "Santa Ana's premier hair salon offering expert cuts, color, and styling services.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Santa Ana",
-        "addressRegion": "CA",
-        "addressCountry": "US"
-      },
-      "priceRange": "$",
-      "telephone": "",
-      "email": ""
-    }
-    </script>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://splitends.com/">
+    <meta property="og:title" content="splitends">
+    <meta property="og:description" content="private booking conduit">
+    <meta property="og:image" content="https://splitends.com/splitends.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="splitends">
+    <meta name="twitter:description" content="private booking conduit">
+    <meta name="twitter:image" content="https://splitends.com/splitends.png">
+    
     <style>
         html {
             font-size: 16px;
@@ -78,7 +49,6 @@
             overflow: hidden;
         }
 
-        /* Starfield Animation */
         #starfield {
             position: fixed;
             top: 0;
@@ -170,35 +140,6 @@
             white-space: nowrap;
         }
 
-        /* Mobile specific - override clamp with fixed large sizes */
-        @media (max-width: 767px) {
-            .container {
-                padding: 2rem 1rem;
-            }
-
-            .logo {
-                width: 75%;
-                max-width: 350px;
-                margin-bottom: 2rem;
-            }
-
-            h1 {
-                font-size: 36px;
-                margin-bottom: 2rem;
-            }
-
-            .btn {
-                font-size: 18px;
-                padding: 14px 40px;
-                min-width: 160px;
-            }
-
-            .star {
-                width: 2.5px !important;
-                height: 2.5px !important;
-            }
-        }
-
         .btn::before {
             content: '';
             position: absolute;
@@ -219,7 +160,6 @@
             box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
         }
 
-        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -296,8 +236,33 @@
             margin-top: 3rem;
         }
 
-        /* Mobile specific overrides */
-        @media (max-width: 768px) {
+        @media (max-width: 767px) {
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .logo {
+                width: 75%;
+                max-width: 350px;
+                margin-bottom: 2rem;
+            }
+
+            h1 {
+                font-size: 36px;
+                margin-bottom: 2rem;
+            }
+
+            .btn {
+                font-size: 18px;
+                padding: 14px 40px;
+                min-width: 160px;
+            }
+
+            .star {
+                width: 2.5px !important;
+                height: 2.5px !important;
+            }
+
             .modal-content {
                 width: 100%;
                 height: 100%;
@@ -331,7 +296,6 @@
         </div>
     </div>
 
-    <!-- Booking Modal -->
     <div id="bookingModal" class="modal">
         <div class="modal-content">
             <button class="close" onclick="closeModal()">&times;</button>
@@ -351,7 +315,6 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Close modal when clicking outside
         window.onclick = function(event) {
             const modal = document.getElementById('bookingModal');
             if (event.target === modal) {
@@ -359,14 +322,12 @@
             }
         }
 
-        // Close modal with Escape key
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeModal();
             }
         });
 
-        // Create starfield
         const starfield = document.getElementById('starfield');
         const numStars = 200;
 
@@ -374,16 +335,13 @@
             const star = document.createElement('div');
             star.className = 'star';
             
-            // Random size
             const size = Math.random() * 2 + 1;
             star.style.width = size + 'px';
             star.style.height = size + 'px';
             
-            // Random position
             star.style.left = Math.random() * 100 + '%';
             star.style.top = Math.random() * 100 + '%';
             
-            // Random animation delay
             star.style.animationDelay = Math.random() * 3 + 's';
             star.style.animationDuration = (Math.random() * 3 + 2) + 's';
             
