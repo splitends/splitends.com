@@ -41,6 +41,12 @@
     /></noscript>
     <!-- End Meta Pixel Code -->
     
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://connect.facebook.net">
+    <link rel="preconnect" href="https://embed.acuityscheduling.com">
+    <link rel="dns-prefetch" href="https://app.acuityscheduling.com">
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="private booking conduit">
@@ -373,11 +379,11 @@
     <div id="bookingModal" class="modal">
         <div class="modal-content">
             <button class="close" onclick="closeModal()">&times;</button>
-            <iframe src="https://app.acuityscheduling.com/schedule.php?owner=12996859&ref=embedded_csp" title="Schedule Appointment" frameBorder="0" allow="payment"></iframe>
+            <iframe id="bookingFrame" data-src="https://app.acuityscheduling.com/schedule.php?owner=12996859&ref=embedded_csp" title="Schedule Appointment" frameBorder="0" allow="payment"></iframe>
         </div>
     </div>
 
-    <script src="https://embed.acuityscheduling.com/js/embed.js" type="text/javascript"></script>
+    <script src="https://embed.acuityscheduling.com/js/embed.js" type="text/javascript" defer></script>
     <script>
         // Console message for curious developers
         console.log('%c⚡ splitends', 'font-size: 32px; font-weight: bold; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;');
@@ -406,7 +412,15 @@
         });
         
         function openModal() {
-            document.getElementById('bookingModal').classList.add('active');
+            const modal = document.getElementById('bookingModal');
+            const iframe = document.getElementById('bookingFrame');
+            
+            // Lazy load iframe on first open
+            if (!iframe.src && iframe.dataset.src) {
+                iframe.src = iframe.dataset.src;
+            }
+            
+            modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
@@ -429,7 +443,7 @@
         });
 
         const starfield = document.getElementById('starfield');
-        const numStars = 150;
+        const numStars = 100;
 
         for (let i = 0; i < numStars; i++) {
             const star = document.createElement('div');
